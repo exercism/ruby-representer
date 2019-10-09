@@ -13,7 +13,7 @@ class GenerateRepresentation
     ast           =  parser.parse(buffer)
 
     File.open(path / "representation.txt","w") do |f|
-      f.write(ast.to_s)
+      f.write(ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"'))
     end
   end
 end

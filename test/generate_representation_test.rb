@@ -6,10 +6,11 @@ class GenerateRepresentationTest < Minitest::Test
     code = %q{
       class TwoFer
         def two_fer
+          "foo"
         end
       end
     }
-    representation = %Q{(class\n  (const nil :TwoFer) nil\n  (def :two_fer\n    (args) nil))}
+    representation = %q{(class (const nil :TwoFer) nil (def :two_fer (args) (str \"foo\")))}
 
     File.expects(:read).with(SAFE_WRITE_PATH / "two_fer.rb").returns(code)
 

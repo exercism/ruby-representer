@@ -1,12 +1,3 @@
-EXERCISES = %w{
-  two_fer
-  acronym
-}
-
-FILENAMES = {
-  "two-fer" => "two_fer.rb"
-}
-
 require 'mandate'
 require 'json'
 require 'rubocop'

@@ -8,6 +8,6 @@ class RepresenterTest < Minitest::Test
     Pathname.expects(:new).with(path).returns(pathname)
 
     GenerateRepresentation.expects(:call).with(slug, pathname)
-    Representer.generate_representation(slug, path)
+    Representer.generate(slug, path)
   end
 end

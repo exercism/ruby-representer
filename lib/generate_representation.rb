@@ -10,7 +10,7 @@ class GenerateRepresentation
     buffer.source = code_to_analyze
     builder       = RuboCop::AST::Builder.new
     parser        = Parser::CurrentRuby.new(builder)
-    ast           =  parser.parse(buffer)
+    ast           = parser.parse(buffer)
 
     File.open(path / "representation.txt","w") do |f|
       f.write(ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"'))

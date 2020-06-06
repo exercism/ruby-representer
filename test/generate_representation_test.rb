@@ -1,8 +1,7 @@
 require "test_helper"
 
 class GenerateRepresentationTest < Minitest::Test
-
-  def test_that_it_constantizes_correctly
+  def test_basic_representation
     code = %q{
       class TwoFer
         def two_fer
@@ -10,14 +9,7 @@ class GenerateRepresentationTest < Minitest::Test
         end
       end
     }
-    representation = %q{(class (const nil :TwoFer) nil (def :two_fer (args) (str \"foo\")))}
-
-    File.expects(:read).with(SAFE_WRITE_PATH / "two_fer.rb").returns(code)
-
-    writer = mock
-    writer.expects(:write).with(representation)
-    File.expects(:open).
-      with(SAFE_WRITE_PATH / "representation.txt", "w").yields(writer)
-    GenerateRepresentation.('two-fer', SAFE_WRITE_PATH)
+    representation = %q{(class (const nil :PLACEHOLDER_0) nil (def :PLACEHOLDER_1 (args) (str \"foo\")))}
+    assert_equal representation, GenerateRepresentation.(code)[0]
   end
 end

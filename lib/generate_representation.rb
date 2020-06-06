@@ -1,19 +1,23 @@
 class GenerateRepresentation
   include Mandate
 
-  initialize_with :exercise_slug, :path
+  initialize_with :code
 
   def call
-    code_to_analyze = File.read(path / "#{exercise_slug.tr('-', '_')}.rb")
+    # Normalise it
+    normalizer = Normalizer.new(code)
+    normalizer.normalize!
 
-    buffer        = Parser::Source::Buffer.new(nil)
-    buffer.source = code_to_analyze
-    builder       = RuboCop::AST::Builder.new
-    parser        = Parser::CurrentRuby.new(builder)
-    ast           = parser.parse(buffer)
+    code = normalizer.normalized_code
 
-    File.open(path / "representation.txt","w") do |f|
-      f.write(ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"'))
-    end
+    # Write it out
+    buffer = Parser::Source::Buffer.new('', source: code)
+    builder = RuboCop::AST::Builder.new
+    ast = Parser::CurrentRuby.new(builder).parse(buffer)
+
+    # Slim it down
+    ast =  ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"'),
+
+    [ast, normalizer.mapping]
   end
 end

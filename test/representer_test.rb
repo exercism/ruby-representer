@@ -7,7 +7,7 @@ class RepresenterTest < Minitest::Test
     pathname = mock
     Pathname.expects(:new).with(path).returns(pathname)
 
-    GenerateRepresentation.expects(:call).with(slug, pathname)
+    RepresentSolution.expects(:call).with(slug, pathname)
     Representer.generate(slug, path)
   end
 end

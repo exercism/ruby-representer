@@ -4,8 +4,11 @@ require 'rubocop'
 require 'parser/current'
 require 'active_support/inflector'
 
-require_relative 'normalize'
-require_relative 'generate_representation'
+require_relative 'normalizers/naming_normalizer'
+
+require_relative 'generate_mapping'
+
+require_relative 'representation'
 require_relative 'represent_solution'
 
 require 'pry'

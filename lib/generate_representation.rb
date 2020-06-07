@@ -4,8 +4,10 @@ class GenerateRepresentation
   initialize_with :code
 
   def call
+    Representation.new
+    Extract
     # Normalise it
-    normalizer = Normalizer.new(code)
+    normalizer = NamingNormalizer.new(code)
     normalizer.normalize!
 
     code = normalizer.normalized_code
@@ -16,7 +18,6 @@ class GenerateRepresentation
     ast = Parser::CurrentRuby.new(builder).parse(buffer)
 
     # Slim it down
-    ast =  ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"'),
 
     [ast, normalizer.mapping]
   end

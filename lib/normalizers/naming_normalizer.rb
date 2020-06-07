@@ -1,20 +1,19 @@
 require 'parser/current'
 
 #class Normalize < Parser::AST::Processor
-class Normalizer < Parser::TreeRewriter
+class NamingNormalizer < Parser::TreeRewriter
   include Mandate
-  attr_reader :mapping, :normalized_code
 
-  def initialize(code)
+  def initialize(code, mapping)
     @original_code = code
-    @mapping = {}
+    @mapping = mapping
   end
 
-  def normalize!
+  def call
     buffer = Parser::Source::Buffer.new('', source: original_code)
     builder = RuboCop::AST::Builder.new
     ast = Parser::CurrentRuby.new(builder).parse(buffer)
-    @normalized_code = rewrite(buffer, ast)
+    rewrite(buffer, ast)
   end
 
   %i{
@@ -41,7 +40,6 @@ class Normalizer < Parser::TreeRewriter
   end
 
   def process_regular_node
-    p "HERE!!"
     super
   end
 
@@ -81,7 +79,7 @@ class Normalizer < Parser::TreeRewriter
   end
 
   private 
-  attr_reader :original_code
+  attr_reader :original_code, :mapping
  
   def replace_loc_name(node)
     replace(node.loc.name, placeholder_for(node.loc.name.source))
@@ -92,11 +90,6 @@ class Normalizer < Parser::TreeRewriter
   end
 
   def placeholder_for(token)
-    return mapping[token] if mapping.has_key?(token)
-    placeholder = "PLACEHOLDER_#{mapping.size}"
-    mapping[token] = placeholder
+    mapping.has_key?(token) ? mapping[token] : token
   end
-
-  # Noops:
-  # on_send
 end

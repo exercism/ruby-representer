@@ -1,9 +1,10 @@
 require "test_helper"
 
-class TokenNormalisationTest < Minitest::Test
+class NamingNormalisationTest < Minitest::Test
   def test_variable_name
     code = "foobar = true"
     representation = "PLACEHOLDER_0 = true"
+    assert_representation code, representation
   end
 
   def test_class_name
@@ -31,14 +32,20 @@ class TokenNormalisationTest < Minitest::Test
   end
 
   def test_method_call
-    code = "foo.bar"
-    representation = "PLACEHOLDER_0.PLACEHOLDER_1"
+    code = %q{
+      def bar; end
+      foo.bar
+    }
+    representation = %q{
+      def PLACEHOLDER_0; end
+      foo.PLACEHOLDER_0
+    }
     assert_representation code, representation
   end
   
-  def test_method_call
-    code = "foo.each"
-    representation = "PLACEHOLDER_0.each"
+  def test_non_defined_method_call
+    code = "foo = []; foo.each"
+    representation = "PLACEHOLDER_0 = []; PLACEHOLDER_0.each"
     assert_representation code, representation
   end
 
@@ -90,7 +97,8 @@ class TokenNormalisationTest < Minitest::Test
   end
 
   def assert_representation(code, expected)
-    actual = Normalizer.new(code).tap(&:normalize!).normalized_code
+    mapping = GenerateMapping.(code)
+    actual = NamingNormalizer.(code, mapping)
     assert_equal expected.strip, actual.strip
   end
 end

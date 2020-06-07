@@ -5,10 +5,15 @@ class RepresentSolution
 
   def call
     code = File.read(path / "#{exercise_slug.tr('-', '_')}.rb")
-    representation = GenerateRepresentation.(code)
+    representation = Representation.new(code)
+    representation.normalize!
 
     File.open(path / "representation.txt","w") do |f|
-      f.write(representation)
+      f.write(representation.ast)
+    end
+
+    File.open(path / "mapping.json","w") do |f|
+      f.write(representation.mapping.to_json)
     end
   end
 end

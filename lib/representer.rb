@@ -14,8 +14,9 @@ require_relative 'represent_solution'
 require 'pry'
 
 module Representer
-  def self.generate(exercise_slug, path)
-    pathname = Pathname.new(path)
-    RepresentSolution.(exercise_slug, pathname)
+  def self.generate(exercise_slug, solution_path, output_path)
+    solution_pathname = Pathname.new(solution_path)
+    output_pathname = Pathname.new(output_path)
+    RepresentSolution.(exercise_slug, solution_pathname, output_pathname)
   end
 end

@@ -11,3 +11,5 @@ WORKDIR /opt/representer
 COPY . .
 
 RUN bundle install
+
+ENTRYPOINT ["sh", "/opt/representer/bin/generate.sh"]

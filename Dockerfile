@@ -6,7 +6,8 @@ RUN apk update && apk upgrade && \
 
 RUN gem install bundler -v 2.1.4
 
-RUN mkdir /opt/representer
-COPY . /opt/representer
 WORKDIR /opt/representer
+
+COPY . .
+
 RUN bundle install

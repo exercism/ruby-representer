@@ -11,7 +11,7 @@ class RepresentateSolutionTest < Minitest::Test
     representation.expects(:normalize!)
 
     Representation.expects(:new).with(code).returns(representation)
-    File.expects(:read).with(SAFE_WRITE_PATH / "two_fer.rb").returns(code)
+    File.expects(:read).with(SOLUTION_PATH / "two_fer.rb").returns(code)
     writer = mock
     writer.expects(:write).with(ast)
     File.expects(:open).
@@ -22,7 +22,7 @@ class RepresentateSolutionTest < Minitest::Test
     File.expects(:open).
       with(SAFE_WRITE_PATH / "mapping.json", "w").yields(writer2)
 
-    RepresentSolution.("two-fer", SAFE_WRITE_PATH)
+    RepresentSolution.("two-fer", SOLUTION_PATH, SAFE_WRITE_PATH)
   end
 end
 

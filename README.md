@@ -1,6 +1,8 @@
 # Exercism's Ruby Representer
 
 ![Tests](https://github.com/exercism/ruby-representer/workflows/Tests/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/902bdd98f91d51456ce9/maintainability)](https://codeclimate.com/github/exercism/ruby-representer/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/902bdd98f91d51456ce9/test_coverage)](https://codeclimate.com/github/exercism/ruby-representer/test_coverage)
 
 This is Exercism's representer for the Ruby track.
 

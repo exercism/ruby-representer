@@ -4,7 +4,7 @@ class RepresentateSolutionTest < Minitest::Test
   def test_extracts_and_writes_code_correctly
     code = "some code"
     ast = "some representation"
-    mapping = {:foo => 'bar'}
+    mapping = { foo: 'bar' }
     representation = mock
     representation.stubs(ast: ast)
     representation.stubs(mapping: mapping)
@@ -17,12 +17,11 @@ class RepresentateSolutionTest < Minitest::Test
     File.expects(:open).
       with(SAFE_WRITE_PATH / "representation.txt", "w").yields(writer)
 
-    writer2 = mock
-    writer2.expects(:write).with(mapping.to_json)
+    writer_2 = mock
+    writer_2.expects(:write).with(mapping.to_json)
     File.expects(:open).
-      with(SAFE_WRITE_PATH / "mapping.json", "w").yields(writer2)
+      with(SAFE_WRITE_PATH / "mapping.json", "w").yields(writer_2)
 
     RepresentSolution.("two-fer", SOLUTION_PATH, SAFE_WRITE_PATH)
   end
 end
-

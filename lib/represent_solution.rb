@@ -8,13 +8,12 @@ class RepresentSolution
     representation = Representation.new(code)
     representation.normalize!
 
-    File.open(output_path / "representation.txt","w") do |f|
+    File.open(output_path / "representation.txt", "w") do |f|
       f.write(representation.ast)
     end
 
-    File.open(output_path / "mapping.json","w") do |f|
+    File.open(output_path / "mapping.json", "w") do |f|
       f.write(representation.mapping.to_json)
     end
   end
 end
-

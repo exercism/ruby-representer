@@ -2,13 +2,13 @@ require "test_helper"
 
 class RepresentationTest < Minitest::Test
   def test_basic_representation
-    code = %q{
+    code = '
       class TwoFer
         def two_fer
           "foo"
         end
       end
-    }
+    '
     representation = Representation.new(code)
     representation.normalize!
 

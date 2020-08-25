@@ -32,33 +32,32 @@ class NamingNormalisationTest < Minitest::Test
   end
 
   def test_method_call
-    code = %q{
+    code = '
       def bar; end
       foo.bar
-    }
-    representation = %q{
+    '
+    representation = '
       def PLACEHOLDER_0; end
       foo.PLACEHOLDER_0
-    }
+    '
     assert_representation code, representation
   end
-  
+
   def test_non_defined_method_call
     code = "foo = []; foo.each"
     representation = "PLACEHOLDER_0 = []; PLACEHOLDER_0.each"
     assert_representation code, representation
   end
 
-
   def test_args
-    code = %Q{
+    code = %{
       foo = 1
       bar = 2
       def somefunc(param1, bar)
         return param1 + bar
       end
     }
-    representation = %Q{
+    representation = %{
       PLACEHOLDER_0 = 1
       PLACEHOLDER_1 = 2
       def PLACEHOLDER_2(PLACEHOLDER_3, PLACEHOLDER_1)
@@ -69,7 +68,7 @@ class NamingNormalisationTest < Minitest::Test
   end
 
   def test_complex_example
-    code = %q{
+    code = '
       class TwoFer
         def two_fer
           "foo"
@@ -80,8 +79,8 @@ class NamingNormalisationTest < Minitest::Test
           return TwoFer.two_fer
         end
       end
-    }
-    representation = %q{
+    '
+    representation = '
       class PLACEHOLDER_0
         def PLACEHOLDER_1
           "foo"
@@ -92,7 +91,7 @@ class NamingNormalisationTest < Minitest::Test
           return PLACEHOLDER_0.PLACEHOLDER_1
         end
       end
-    }
+    '
     assert_representation(code, representation)
   end
 
@@ -102,4 +101,3 @@ class NamingNormalisationTest < Minitest::Test
     assert_equal expected.strip, actual.strip
   end
 end
-

@@ -1,6 +1,6 @@
 require 'parser/current'
 
-#class Normalize < Parser::AST::Processor
+# class Normalize < Parser::AST::Processor
 class NamingNormalizer < Parser::TreeRewriter
   include Mandate
 
@@ -16,13 +16,13 @@ class NamingNormalizer < Parser::TreeRewriter
     rewrite(buffer, ast)
   end
 
-  %i{
+  %i[
     on_argument
     on_const
     on_def
     on_var
     on_vasgn
-  }.each do |method_name|
+  ].each do |method_name|
     define_method method_name do |node|
       replace_loc_name(node)
       super(node)
@@ -30,8 +30,8 @@ class NamingNormalizer < Parser::TreeRewriter
   end
 
   def on_send(node)
-    #node.pry
-    if !node.enumerator_method? && 
+    # node.pry
+    if !node.enumerator_method? &&
        !node.operator_method?
       replace_loc_selector(node)
     end
@@ -69,8 +69,8 @@ class NamingNormalizer < Parser::TreeRewriter
 
   def handler_missing(node)
     case node.type
-    #noop
-    when :true, :str, :nil, :int
+    # noop
+    when true, :str, :nil, :int
       super
     else
       p "handler_missing"
@@ -78,9 +78,9 @@ class NamingNormalizer < Parser::TreeRewriter
     end
   end
 
-  private 
+  private
   attr_reader :original_code, :mapping
- 
+
   def replace_loc_name(node)
     replace(node.loc.name, placeholder_for(node.loc.name.source))
   end
@@ -90,6 +90,6 @@ class NamingNormalizer < Parser::TreeRewriter
   end
 
   def placeholder_for(token)
-    mapping.has_key?(token) ? mapping[token] : token
+    mapping.key?(token) ? mapping[token] : token
   end
 end

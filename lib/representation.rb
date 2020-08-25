@@ -17,7 +17,7 @@ class Representation
     ast = Parser::CurrentRuby.new(builder).parse(buffer)
 
     # Slim it down
-    ast.to_s.gsub("\n", " ").squeeze(" ").gsub('"', '\"')
+    ast.to_s.tr("\n", " ").squeeze(" ").gsub('"', '\"')
   end
 
   private
@@ -25,4 +25,3 @@ class Representation
   attr_accessor :processed_code
   attr_writer :mapping
 end
-

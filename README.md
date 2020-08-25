@@ -13,3 +13,17 @@ For example:
 ```bash
 ./bin/run.sh two_fer ~/solution-238382y7sds7fsadfasj23j/ ~/solution-238382y7sds7fsadfasj23j/output
 ```
+
+## Running the tests
+
+Before running the tests, first install the dependencies:
+
+```bash
+bundle install
+```
+
+Then, run the following command to run the tests:
+
+```bash
+bundle exec rake test
+```

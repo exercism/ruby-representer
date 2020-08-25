@@ -5,7 +5,8 @@ require 'minitest/pride'
 require "mocha/minitest"
 
 class Minitest::Test
-  SAFE_WRITE_PATH = Pathname.new('/tmp')
+  SAFE_WRITE_PATH = Pathname.new('/tmp/output')
+  SOLUTION_PATH = Pathname.new('/tmp')
 
   def assert_representation(code, representation)
     assert_equal representation.strip, GenerateRepresentation.(code).first

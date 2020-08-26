@@ -32,10 +32,6 @@ Lint/SuppressedException:
   Exclude:
     - "test/**/*"
 
-Lint/Void:
-  Exclude:
-    - "lib/generate_representation.rb"
-
 Metrics/BlockLength:
   Exclude:
     - "test/**/*"

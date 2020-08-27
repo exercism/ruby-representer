@@ -16,10 +16,10 @@ class GenerateMapping < Parser::AST::Processor
     mapping
   end
 
-  %i{
+  %i[
     on_def
     on_vasgn
-  }.each do |method_name|
+  ].each do |method_name|
     define_method method_name do |node|
       add_loc_name(node)
       super(node)
@@ -35,17 +35,17 @@ class GenerateMapping < Parser::AST::Processor
   end
 
   def on_var(node)
-    #p "on_var"
-    #node.pry
-    #super
+    # p "on_var"
+    # node.pry
+    # super
   end
 
   # No-op
-  #def on_send(node)
+  # def on_send(node)
   #  #p "send"
   #  #node.pry
   #  super
-  #end
+  # end
 
   def process_regular_node
     p "regular_node"
@@ -94,11 +94,11 @@ class GenerateMapping < Parser::AST::Processor
             when :str
               add_entry(arg.value)
             end
-            #add_entry(arg)
+            # add_entry(arg)
           end
-        else
-          #p "process"
-          #node.pry
+          # else
+          # p "process"
+          # node.pry
         end
       end
     end
@@ -108,8 +108,8 @@ class GenerateMapping < Parser::AST::Processor
 
   def handler_missing(node)
     case node.type
-    #noop
-    when :true, :str, :nil, :int, :sym
+    # noop
+    when true, :str, :nil, :int, :sym
       super
     else
       p "handler_missing"
@@ -117,7 +117,7 @@ class GenerateMapping < Parser::AST::Processor
     end
   end
 
-  private 
+  private
   attr_reader :code, :mapping
 
   def add_loc_name(node)
@@ -125,8 +125,8 @@ class GenerateMapping < Parser::AST::Processor
   end
 
   def add_entry(token)
-    return if mapping.has_key?(token)
+    return if mapping.key?(token)
+
     mapping[token] = "PLACEHOLDER_#{mapping.size}"
   end
 end
-

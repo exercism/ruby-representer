@@ -19,9 +19,8 @@ class Minitest::Test
   end
 end
 
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+$LOAD_PATH.unshift File.expand_path('../lib', __dir__)
 require "representer"
 
 class Minitest::Test
-
 end

@@ -4,8 +4,6 @@ class GenerateRepresentation
   initialize_with :code
 
   def call
-    Representation.new
-    Extract
     # Normalise it
     normalizer = NamingNormalizer.new(code)
     normalizer.normalize!

@@ -2,7 +2,7 @@ require 'mandate'
 require 'json'
 require 'rubocop'
 require 'parser/current'
-require 'active_support/inflector'
+require 'pathname'
 
 require_relative 'normalizers/naming_normalizer'
 
@@ -11,7 +11,7 @@ require_relative 'generate_mapping'
 require_relative 'representation'
 require_relative 'represent_solution'
 
-require 'pry'
+#require 'pry'
 
 module Representer
   def self.generate(exercise_slug, solution_path, output_path)

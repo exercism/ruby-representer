@@ -14,11 +14,11 @@ class RepresentationTest < Minitest::Test
 
     mapping = {
       "TwoFer" => "PLACEHOLDER_0",
-      "two_fer" => "PLACEHOLDER_1"
+      "two_fer" => "placeholder_1"
     }
     assert_equal mapping, representation.mapping
 
-    ast = %q{(class (const nil :PLACEHOLDER_0) nil (def :PLACEHOLDER_1 (args) (str \"foo\")))}
+    ast = %q{(class  (const nil :PLACEHOLDER_0) nil  (def :placeholder_1    (args)    (str "foo")))}
     assert_equal ast, representation.ast
   end
 end

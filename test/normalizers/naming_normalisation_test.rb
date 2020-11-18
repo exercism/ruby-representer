@@ -3,7 +3,7 @@ require "test_helper"
 class NamingNormalisationTest < Minitest::Test
   def test_variable_name
     code = "foobar = true"
-    representation = "PLACEHOLDER_0 = true"
+    representation = "placeholder_0 = true"
     assert_representation code, representation
   end
 
@@ -15,19 +15,19 @@ class NamingNormalisationTest < Minitest::Test
 
   def test_method_name
     code = "def foobar; end"
-    representation = "def PLACEHOLDER_0; end"
+    representation = "def placeholder_0; end"
     assert_representation code, representation
   end
 
   def test_if
     code = "foo = true; if foo then 'bar' else nil end"
-    representation = "PLACEHOLDER_0 = true; if PLACEHOLDER_0 then 'bar' else nil end"
+    representation = "placeholder_0 = true; if placeholder_0 then 'bar' else nil end"
     assert_representation code, representation
   end
 
   def test_return
     code = "foo = true; return foo"
-    representation = "PLACEHOLDER_0 = true; return PLACEHOLDER_0"
+    representation = "placeholder_0 = true; return placeholder_0"
     assert_representation code, representation
   end
 
@@ -37,15 +37,15 @@ class NamingNormalisationTest < Minitest::Test
       foo.bar
     '
     representation = '
-      def PLACEHOLDER_0; end
-      foo.PLACEHOLDER_0
+      def placeholder_0; end
+      foo.placeholder_0
     '
     assert_representation code, representation
   end
 
   def test_non_defined_method_call
     code = "foo = []; foo.each"
-    representation = "PLACEHOLDER_0 = []; PLACEHOLDER_0.each"
+    representation = "placeholder_0 = []; placeholder_0.each"
     assert_representation code, representation
   end
 
@@ -58,10 +58,10 @@ class NamingNormalisationTest < Minitest::Test
       end
     }
     representation = %{
-      PLACEHOLDER_0 = 1
-      PLACEHOLDER_1 = 2
-      def PLACEHOLDER_2(PLACEHOLDER_3, PLACEHOLDER_1)
-        return PLACEHOLDER_3 + PLACEHOLDER_1
+      placeholder_0 = 1
+      placeholder_1 = 2
+      def placeholder_2(placeholder_3, placeholder_1)
+        return placeholder_3 + placeholder_1
       end
     }
     assert_representation code, representation
@@ -82,13 +82,13 @@ class NamingNormalisationTest < Minitest::Test
     '
     representation = '
       class PLACEHOLDER_0
-        def PLACEHOLDER_1
+        def placeholder_1
           "foo"
         end
 
-        def PLACEHOLDER_2
-          PLACEHOLDER_1 = "cat"
-          return PLACEHOLDER_0.PLACEHOLDER_1
+        def placeholder_2
+          placeholder_1 = "cat"
+          return PLACEHOLDER_0.placeholder_1
         end
       end
     '

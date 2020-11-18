@@ -45,25 +45,25 @@ class NamingNormalizer < Parser::TreeRewriter
 
   def on_op_asgn(node)
     p "opasgn"
-    node.pry
+    #node.pry
     super
   end
 
   def on_casgn(node)
     p "casgn"
-    node.pry
+    #node.pry
     super
   end
 
   def on_defs(node)
     p "defs"
-    node.pry
+    #node.pry
     super
   end
 
   def on_numblock(node)
     p "numblock"
-    node.pry
+    #node.pry
     super
   end
 
@@ -74,7 +74,7 @@ class NamingNormalizer < Parser::TreeRewriter
       super
     else
       p "handler_missing"
-      node.pry
+      #node.pry
     end
   end
 

@@ -49,31 +49,31 @@ class GenerateMapping < Parser::AST::Processor
 
   def process_regular_node
     p "regular_node"
-    node.pry
+    #node.pry
     super
   end
 
   def on_op_asgn(node)
     p "opasgn"
-    node.pry
+    #node.pry
     super
   end
 
   def on_casgn(node)
     p "casgn"
-    node.pry
+    #node.pry
     super
   end
 
   def on_defs(node)
     p "defs"
-    node.pry
+    #node.pry
     super
   end
 
   def on_numblock(node)
     p "numblock"
-    node.pry
+    #node.pry
     super
   end
 
@@ -113,7 +113,7 @@ class GenerateMapping < Parser::AST::Processor
       super
     else
       p "handler_missing"
-      node.pry
+      #node.pry
     end
   end
 
@@ -127,6 +127,11 @@ class GenerateMapping < Parser::AST::Processor
   def add_entry(token)
     return if mapping.key?(token)
 
-    mapping[token] = "PLACEHOLDER_#{mapping.size}"
+    # The placeholder case should match the token case
+    if token[0] == token[0].capitalize
+      mapping[token] = "PLACEHOLDER_#{mapping.size}"
+    else
+      mapping[token] = "placeholder_#{mapping.size}"
+    end
   end
 end

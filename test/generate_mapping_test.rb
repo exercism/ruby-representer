@@ -27,7 +27,7 @@ class GenerateMappingTest < Minitest::Test
       end
       barfoo()
     }
-    mapping = { "foobar" => "PLACEHOLDER_0" }
+    mapping = { "foobar" => "placeholder_0" }
     assert_mapping(code, mapping)
   end
 
@@ -36,7 +36,7 @@ class GenerateMappingTest < Minitest::Test
       foobar = true
       puts barfoo
     )
-    mapping = { "foobar" => "PLACEHOLDER_0" }
+    mapping = { "foobar" => "placeholder_0" }
     assert_mapping(code, mapping)
   end
 
@@ -46,7 +46,7 @@ class GenerateMappingTest < Minitest::Test
         foobar = true
       end
     )
-    mapping = { "Foobar" => "PLACEHOLDER_0", "foobar" => "PLACEHOLDER_1" }
+    mapping = { "Foobar" => "PLACEHOLDER_0", "foobar" => "placeholder_1" }
     assert_mapping(code, mapping)
   end
 
@@ -56,7 +56,7 @@ class GenerateMappingTest < Minitest::Test
       end
       somefunc(a,b)
     }
-    mapping = { "somefunc" => "PLACEHOLDER_0", "foo" => "PLACEHOLDER_1", "bar" => "PLACEHOLDER_2" }
+    mapping = { "somefunc" => "placeholder_0", "foo" => "placeholder_1", "bar" => "placeholder_2" }
     assert_mapping(code, mapping)
   end
 
@@ -71,11 +71,11 @@ class GenerateMappingTest < Minitest::Test
     )
     mapping = {
       "Foobar" => "PLACEHOLDER_0",
-      "foobar" => "PLACEHOLDER_1",
-      "other1" => "PLACEHOLDER_2",
-      "other2" => "PLACEHOLDER_3",
-      "barfood" => "PLACEHOLDER_4",
-      "misc" => "PLACEHOLDER_5"
+      "foobar" => "placeholder_1",
+      "other1" => "placeholder_2",
+      "other2" => "placeholder_3",
+      "barfood" => "placeholder_4",
+      "misc" => "placeholder_5"
     }
     assert_mapping(code, mapping)
   end

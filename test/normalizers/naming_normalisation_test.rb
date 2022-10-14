@@ -13,6 +13,18 @@ class NamingNormalisationTest < Minitest::Test
     assert_representation code, representation
   end
 
+  def test_instance_variable
+    code = "@foo = bar"
+    representation = "@placeholder_0 = bar"
+    assert_representation code, representation
+  end
+
+  def test_global_variable
+    code = "$foo = bar"
+    representation = "$placeholder_0 = bar"
+    assert_representation code, representation
+  end
+
   def test_method_name
     code = "def foobar; end"
     representation = "def placeholder_0; end"
@@ -100,4 +112,24 @@ class NamingNormalisationTest < Minitest::Test
     actual = NamingNormalizer.(code, mapping)
     assert_equal expected.strip, actual.strip
   end
+
+  def test_complex_method
+    code = "
+      def initialize(a, b)
+        @alphabet = ('a'..'z').to_a
+        @key = [a, b]; coprime_check(key[0])
+        @cipherbet = make_cipherbet.join
+      end
+    "
+    representation = "
+      def placeholder_0(placeholder_1, placeholder_2)
+        @placeholder_3 = ('a'..'z').to_a
+        @placeholder_4 = [placeholder_1, placeholder_2]; coprime_check(key[0])
+        @placeholder_5 = make_cipherbet.join
+      end
+    "
+    assert_representation code, representation
+  end
+
+
 end

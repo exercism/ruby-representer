@@ -4,6 +4,8 @@ require 'rubocop'
 require 'parser/current'
 require 'pathname'
 
+require_relative 'naming_normalizers/base'
+require_relative 'naming_normalizers/method_locals'
 require_relative 'normalizers/naming_normalizer'
 
 require_relative 'generate_mapping'
@@ -11,7 +13,7 @@ require_relative 'generate_mapping'
 require_relative 'representation'
 require_relative 'represent_solution'
 
-#require 'pry'
+require 'pry'
 
 module Representer
   def self.generate(exercise_slug, solution_path, output_path)

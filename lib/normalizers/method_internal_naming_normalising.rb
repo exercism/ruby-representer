@@ -1,7 +1,7 @@
 require 'parser/current'
 
 # class Normalize < Parser::AST::Processor
-class NamingNormalizer < Parser::TreeRewriter
+class NamingNormalizers::MethodInternals < Parser::TreeRewriter
   include Mandate
 
   def initialize(code, mapping)
@@ -47,6 +47,7 @@ class NamingNormalizer < Parser::TreeRewriter
   end
 
   def process_regular_node
+    p "HERE?"
     super
   end
 
@@ -110,3 +111,4 @@ class NamingNormalizer < Parser::TreeRewriter
     mapping.key?(key) ? mapping[key] : key
   end
 end
+

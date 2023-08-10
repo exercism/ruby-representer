@@ -78,6 +78,3 @@ Naming/VariableNumber:
 
 Style/LambdaCall:
   EnforcedStyle: braces
-
-Style/TrailingCommaInLiteral:
-  Enabled: false

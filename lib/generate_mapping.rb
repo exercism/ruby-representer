@@ -4,6 +4,7 @@ class GenerateMapping < Parser::AST::Processor
   include Mandate
 
   def initialize(code)
+    super
     @code = code
     @mapping = {}
   end
@@ -90,7 +91,7 @@ class GenerateMapping < Parser::AST::Processor
           node.arguments.each do |arg|
             case arg.type
             when :sym
-              add_entry(arg.loc.expression.source[1..-1])
+              add_entry(arg.loc.expression.source[1..])
             when :str
               add_entry(arg.value)
             end
@@ -128,14 +129,15 @@ class GenerateMapping < Parser::AST::Processor
     return if mapping.key?(token)
 
     # The placeholder case should match the token type and case
-    if token[0] == "@"
-      mapping[token] = "@placeholder_#{mapping.size}"
-    elsif token[0] == "$"
-      mapping[token] = "$placeholder_#{mapping.size}"
-    elsif token[0] == token[0].capitalize
-      mapping[token] = "PLACEHOLDER_#{mapping.size}"
-    else
-      mapping[token] = "placeholder_#{mapping.size}"
-    end
+    mapping[token] = case token[0]
+                     when "@"
+                       "@placeholder_#{mapping.size}"
+                     when "$"
+                       "$placeholder_#{mapping.size}"
+                     when token[0].capitalize
+                       "PLACEHOLDER_#{mapping.size}"
+                     else
+                       "placeholder_#{mapping.size}"
+                     end
   end
 end

@@ -130,6 +130,4 @@ class NamingNormalisationTest < Minitest::Test
     "
     assert_representation code, representation
   end
-
-
 end

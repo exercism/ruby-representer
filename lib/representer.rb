@@ -11,7 +11,7 @@ require_relative 'generate_mapping'
 require_relative 'representation'
 require_relative 'represent_solution'
 
-#require 'pry'
+# require 'pry'
 
 module Representer
   def self.generate(exercise_slug, solution_path, output_path)

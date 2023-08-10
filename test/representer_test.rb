@@ -45,5 +45,4 @@ class RepresenterTest < Minitest::Test
       assert_equal ast, File.read("#{dir}/representation.txt")
     end
   end
-  
 end

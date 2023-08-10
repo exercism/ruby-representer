@@ -6,6 +6,8 @@ AllCops:
   NewCops: disable
   Exclude:
     - "bin/**/*"
+    - "tests/**/*"
+    - "vendor/**/*"
     - "Gemfile"
     - "Gemfile.lock"
 
@@ -27,6 +29,7 @@ Layout/EmptyLinesAroundAccessModifier:
 Layout/LineLength:
   Exclude:
     - "scripts/generate_fixture.rb"
+    - "test/**/*"
 
 Lint/SuppressedException:
   Exclude:

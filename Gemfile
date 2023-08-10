@@ -10,7 +10,7 @@ gem 'mandate'
 gem 'rake'
 
 gem 'parser'
-gem 'rubocop'
+gem 'rubocop', '< 1.50.0'
 gem 'rubocop-minitest'
 gem 'rubocop-performance'
 

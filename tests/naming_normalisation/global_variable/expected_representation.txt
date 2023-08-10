@@ -1,0 +1,1 @@
+(gvasgn :$placeholder_0  (send nil :bar))

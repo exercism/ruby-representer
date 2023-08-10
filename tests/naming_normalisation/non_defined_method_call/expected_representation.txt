@@ -1,0 +1,1 @@
+(begin  (lvasgn :placeholder_0    (array))  (send    (lvar :placeholder_0) :each))

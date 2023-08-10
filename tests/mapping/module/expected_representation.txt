@@ -1,0 +1,1 @@
+(begin  (module    (const nil :PLACEHOLDER_0) nil)  (const nil :BarFoo))

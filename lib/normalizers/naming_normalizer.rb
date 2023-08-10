@@ -5,9 +5,9 @@ class NamingNormalizer < Parser::TreeRewriter
   include Mandate
 
   def initialize(code, mapping)
-    super
     @original_code = code
     @mapping = mapping
+    super()
   end
 
   def call

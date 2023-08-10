@@ -4,9 +4,9 @@ class GenerateMapping < Parser::AST::Processor
   include Mandate
 
   def initialize(code)
-    super
     @code = code
     @mapping = {}
+    super()
   end
 
   def call

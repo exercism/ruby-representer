@@ -8,8 +8,10 @@ RUN gem install bundler -v 2.1.4
 
 WORKDIR /opt/representer
 
-COPY . .
+COPY Gemfile Gemfile.lock .
 
 RUN bundle install
+
+COPY . .
 
 ENTRYPOINT ["sh", "/opt/representer/bin/run.sh"]

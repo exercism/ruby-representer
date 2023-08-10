@@ -9,6 +9,7 @@ AllCops:
     - "tests/**/*"
     - "Gemfile"
     - "Gemfile.lock"
+    - "vendor/bundle/ruby/2.6.0/gems/simplecov-html-0.10.2/*"
 
 Bundler/OrderedGems:
   Enabled: false

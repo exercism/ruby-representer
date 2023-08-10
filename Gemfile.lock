@@ -23,7 +23,7 @@ GEM
     rake (13.0.1)
     regexp_parser (2.8.1)
     rexml (3.2.6)
-    rubocop (1.49.0)
+    rubocop (1.50.2)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.2.0.0)
@@ -61,7 +61,7 @@ DEPENDENCIES
   parser
   pry
   rake
-  rubocop (< 1.50.0)
+  rubocop
   rubocop-minitest
   rubocop-performance
   simplecov (~> 0.17.0)

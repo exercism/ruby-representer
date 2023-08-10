@@ -1,0 +1,1 @@
+(begin  (lvasgn :placeholder_0    (true))  (send nil :puts    (send nil :barfoo)))

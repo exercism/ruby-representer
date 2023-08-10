@@ -1,0 +1,1 @@
+(class  (const nil :PLACEHOLDER_0) nil  (begin    (send nil :attr_reader      (sym :foobar))    (send nil :attr_reader      (str "other1")      (str "other2"))    (send nil :attr_writer      (sym :barfood))    (send nil :attr_accessor      (sym :misc))))

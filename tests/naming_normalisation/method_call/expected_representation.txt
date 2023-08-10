@@ -1,0 +1,1 @@
+(begin  (def :placeholder_0    (args) nil)  (send    (send nil :foo) :placeholder_0))

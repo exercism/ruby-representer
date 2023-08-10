@@ -1,0 +1,1 @@
+(begin  (lvasgn :placeholder_0    (int 1))  (lvasgn :placeholder_1    (int 2))  (def :placeholder_2    (args      (arg :placeholder_3)      (arg :placeholder_1))    (return      (send        (lvar :placeholder_3) :+        (lvar :placeholder_1)))))

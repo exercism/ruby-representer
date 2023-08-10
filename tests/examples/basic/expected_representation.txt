@@ -1,0 +1,1 @@
+(class  (const nil :PLACEHOLDER_0) nil  (def :placeholder_1    (args)    (str "foo")))

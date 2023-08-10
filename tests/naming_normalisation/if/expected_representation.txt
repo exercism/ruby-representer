@@ -1,0 +1,1 @@
+(begin  (lvasgn :placeholder_0    (true))  (if    (lvar :placeholder_0)    (str "bar")    (nil)))

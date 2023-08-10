@@ -1,0 +1,1 @@
+(class  (const nil :PLACEHOLDER_0) nil  (begin    (def :placeholder_1      (args)      (str "foo"))    (def :placeholder_2      (args)      (begin        (lvasgn :placeholder_1          (str "cat"))        (return          (send            (const nil :PLACEHOLDER_0) :placeholder_1))))))

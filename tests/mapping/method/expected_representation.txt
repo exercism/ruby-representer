@@ -1,0 +1,1 @@
+(begin  (class    (const nil :PLACEHOLDER_0) nil nil)  (const nil :BarFoo))

@@ -1,0 +1,3 @@
+module Foobar
+end
+BarFoo

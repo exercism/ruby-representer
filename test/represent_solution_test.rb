@@ -6,8 +6,8 @@ class RepresentateSolutionTest < Minitest::Test
     ast = "some representation"
     mapping = { foo: 'bar' }
     representation = mock
-    representation.stubs(ast: ast)
-    representation.stubs(mapping: mapping)
+    representation.stubs(ast:)
+    representation.stubs(mapping:)
     representation.expects(:normalize!)
 
     Representation.expects(:new).with(code).returns(representation)

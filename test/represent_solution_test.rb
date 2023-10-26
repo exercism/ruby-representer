@@ -11,7 +11,7 @@ class RepresentateSolutionTest < Minitest::Test
     representation.stubs(mapping:)
     representation.expects(:normalize!)
 
-    config = {files: { solution: [code_filepath] } }.to_json
+    config = { files: { solution: [code_filepath] } }.to_json
 
     Representation.expects(:new).with(code).returns(representation)
     File.expects(:read).with(SOLUTION_PATH / ".meta/config.json").returns(config)

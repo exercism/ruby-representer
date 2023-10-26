@@ -16,6 +16,9 @@ class RepresenterTest < Minitest::Test
 
   def test_e2e
     Dir.mktmpdir("code") do |dir|
+      Dir.mkdir("#{dir}/.meta")
+      File.write("#{dir}/.meta/config.json", {files: { solution: ['lasagna.rb'] } }.to_json)
+
       File.write("#{dir}/lasagna.rb", '
         class Lasagna
           EXPECTED_MINUTES_IN_OVEN = 40

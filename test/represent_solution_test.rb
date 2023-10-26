@@ -4,14 +4,19 @@ class RepresentateSolutionTest < Minitest::Test
   def test_extracts_and_writes_code_correctly
     code = "some code"
     ast = "some representation"
+    code_filepath = "foooooo.rb"
     mapping = { foo: 'bar' }
     representation = mock
     representation.stubs(ast:)
     representation.stubs(mapping:)
     representation.expects(:normalize!)
 
+    config = {files: { solution: [code_filepath] } }.to_json
+
     Representation.expects(:new).with(code).returns(representation)
-    File.expects(:read).with(SOLUTION_PATH / "two_fer.rb").returns(code)
+    File.expects(:read).with(SOLUTION_PATH / ".meta/config.json").returns(config)
+
+    File.expects(:read).with(SOLUTION_PATH / code_filepath).returns(code)
     writer = mock
     writer.expects(:write).with(ast)
     File.expects(:open).

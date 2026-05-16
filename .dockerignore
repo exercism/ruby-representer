@@ -9,6 +9,7 @@ node_modules/
 .gitattributes
 .dockerignore
 Dockerfile
+README.md
 bin/
 !bin/run.sh
 !bin/run.rb

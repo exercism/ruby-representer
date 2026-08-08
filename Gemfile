@@ -5,19 +5,18 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activesupport'
 gem 'json'
 gem 'mandate'
+gem 'minitest'
+gem 'minitest-stub-const'
+gem 'mocha'
+gem 'mutex_m'
+gem 'pry'
 gem 'rake'
-
-gem 'parser'
 gem 'rubocop'
+gem 'rubocop-ast'
 gem 'rubocop-minitest'
 gem 'rubocop-performance'
-
-group :test do
-  gem 'minitest', '~> 5.10', '!= 5.10.2'
-  gem 'minitest-stub-const'
-  gem 'mocha'
-  gem 'pry'
-  gem 'simplecov', '~> 0.17.0'
-end
+gem 'sexp_processor'
+gem 'simplecov', '~> 0.17.0'

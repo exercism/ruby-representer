@@ -27,3 +27,15 @@ Then, run the following command to run the tests:
 ```bash
 bundle exec rake test
 ```
+
+## Updating Gemfile.lock
+
+```
+$ docker run -it --rm -v $PWD:/ruby-representer --entrypoint sh $ruby_image
+apk update && apk upgrade
+apk add --no-cache git openssh build-base gcc wget git
+cd /ruby-representer
+gem install bundler:4.0.11
+bundle config set without 'development test'
+bundle update --all
+```

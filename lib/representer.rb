@@ -2,7 +2,6 @@ require 'mandate'
 require 'json'
 require 'rubocop'
 require 'parser/current'
-require 'pathname'
 
 require_relative 'normalizers/naming_normalizer'
 
